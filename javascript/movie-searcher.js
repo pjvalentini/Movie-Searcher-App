@@ -26,9 +26,9 @@ $(document).ready(function() {
 			type: "GET",
 			url: "http://omdbapi.com",
 			data: {
-	 			apiKey: "1a18ddb3",
-	 					t: title,
- 					},
+				apiKey: "1a18ddb3",
+				t: title,
+			},
 			success: function(res) {
 				if (!res.Error) {
 					// Input the movie in to all elements
@@ -51,10 +51,15 @@ $(document).ready(function() {
 					$genres.html("");
 
 					// clears the input field when you click/focus on the input field.
+					// if the input field is ledd that 3 letters then you can refocus on the input
+					// and clear the field.
 					$('#input').focus(function() {
-        		$(this).val('');
-    			});
+						if ($(this).val('') < 3) {
+							return $(this).val('');
+						}
+					});
 				}
+				// shows the data object in the console.
 				console.log(res);
 			},
 		});
