@@ -11,6 +11,7 @@ $(document).ready(function() {
 	var $director = $(".moviesearch-movie-info-director");
 	var $actors = $(".moviesearch-movie-info-actors");
 	var $genres = $(".moviesearch-movie-info-genres");
+	var $rated = $(".moviesearch-movie-info-rated");
 
 // Create a keyup event that is linked to the title input field.
 	$input.on("keyup", function() {
@@ -30,6 +31,7 @@ $(document).ready(function() {
 				t: title,
 			},
 			success: function(res) {
+				console.log(res);
 				if (!res.Error) {
 					// Input the movie in to all elements
 					$poster.attr("src", res.Poster);
@@ -39,6 +41,7 @@ $(document).ready(function() {
 					$director.html("Directed by " + res.Director);
 					$actors.html("Starring " + res.Actors);
 					$genres.html(res.Genre);
+					$rated.html("Rated: " + res.Rated);
 				}
 				else {
 					// Reset all elements with blank values
@@ -49,9 +52,11 @@ $(document).ready(function() {
 					$director.html("");
 					$actors.html("");
 					$genres.html("");
+					$rated.html("");
+
 
 					// clears the input field when you click/focus on the input field.
-					// if the input field is ledd that 3 letters then you can refocus on the input
+					// if the input field is less that 3 letters then you can refocus on the input
 					// and clear the field.
 					$('#input').focus(function() {
 						if ($(this).val('') < 3) {
