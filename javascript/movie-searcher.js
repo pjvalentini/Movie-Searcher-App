@@ -27,7 +27,7 @@ $(document).ready(function() {
 			type: "GET",
 			url: "http://omdbapi.com",
 			data: {
-				apiKey: "1a18ddb3",
+				apiKey: "60f7bdd3",
 				t: title,
 			},
 			success: function(res) {
